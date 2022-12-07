@@ -1,0 +1,56 @@
+---
+title: "Creating Your First Job"
+---
+
+![](/images/creating-first-job-1.png)
+
+# Job terminology
+
+- **Refresh Query:** Refresh Query is a query that can update the table. Mostly
+  INSERT with SELECT clause, or MERGE statements.
+
+# Step 1 : Register a Refresh Query
+
+<Note>
+A refresh query can only be registered to tables created in Kaldea.
+
+</Note>
+
+## Registering Refresh Query using Query Editor
+
+- To register a refresh query from the Query Editor, click `Save as` then toggle
+  to the `Refresh query` tab from the Save as modal.
+- Kaldea will automatically detect the datasource and destination table for you.
+- Click `Save`.
+
+![](/images/creating-first-job-2.gif)
+
+# Step 2 : Create a Job
+
+- From the Job page, click `+ Create a Job`
+- From the Table List, select source tables that you’d like to create a job for.
+- Enter Job title.
+- Click `Register`.
+
+![](/images/creating-first-job-3.gif)
+
+# Step 3 : Schedule Job
+
+- Click `Create Schedule`.
+- Select Frequency and Time.
+- Click `Create`.
+
+![](/images/creating-first-job-4.gif)
+
+# Step 4 : Activate job
+
+- Turn on toggle to activate job.
+
+![](/images/creating-first-job-5.gif)
+
+# Step 5 : Check Job Run History and Log
+
+- Click `Job Runs History`.
+- Click `Logs`.
+
+![](/images/creating-first-job-6.gif)

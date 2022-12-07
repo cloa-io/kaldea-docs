@@ -1,0 +1,281 @@
+---
+title: "Athena"
+---
+
+To connect your AWS Athena to Kaldea, you will need Admin access to AWS account
+
+<Accordion title="Before you start">
+
+1. The following guide assumes you're an Organization Admin. Otherwise you won't see these options.
+
+2. Once you have integrated your data source, the catalog's lineage building may take a few hours to a day depending on your table count and query history. We recommend coming back the next day to start using Kaldea.
+
+</Accordion>
+
+## Pre-requisite
+
+- You must be using Athena with workgroups. → “`WORKGROUP_NAME`”
+  - **The workgroup must specifies the S3 bucket that will store the output of
+    Athena queries.**
+  - For more information, refer to
+    _[the official documentation on using workgroups](https://docs.aws.amazon.com/athena/latest/ug/manage-queries-control-costs-with-workgroups.html)_.
+  - You can also use the default workgroup named “_primary_” **with query output
+    location**.
+- **You must have an output bucket registered to the workgroup**. →
+  “`OUTPUT_BUCKET_ARN`”
+
+## Configuring IAM users for Kaldea
+
+There are 2 categories of IAM credentials that need to be prepared for Kaldea :
+
+- `kaldea-system`
+- `kaldea-user`
+
+### Create an IAM user: `kaldea-system`
+
+This IAM user will be used by the Kaldea’s system to retrieve the query history.
+
+`kaldea-system` requires the following permissions :
+
+<Accordion title="All athena action on all Athena resources" >
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+    {
+    "Effect": "Allow",
+    "Action": ["athena:*"],
+    "Resource": ["*"]
+    }
+]
+}
+```
+</Accordion>
+
+<Accordion title="S3 action to S3 bucket on the ‘all S3 buckets that needs to be accessed from
+  Athena’">
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+       {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:ListBucketMultipartUploads",
+                "s3:ListMultipartUploadParts",
+                "s3:AbortMultipartUpload",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<athena-result-bucket>",
+                "arn:aws:s3:::<athena-result-bucket>/*",
+                "arn:aws:s3:::<athena-table-bucket>",
+                "arn:aws:s3:::<athena-table-bucket>/*",
+                "arn:aws:s3:::<athena-table-bucket2>",
+                "arn:aws:s3:::<athena-table-bucket2>/*"
+            ]
+        }
+}
+```
+
+</Accordion>
+
+<Accordion title="Glue permission for glue databases for integration.">
+  ```json
+  {
+      "Version": "2012-10-17",
+      "Statement": [
+              "Effect": "Allow",
+              "Action": [
+                  "glue:CreateDatabase",
+                  "glue:DeleteDatabase",
+                  "glue:GetDatabase",
+                  "glue:GetDatabases",
+                  "glue:UpdateDatabase",
+                  "glue:CreateTable",
+                  "glue:DeleteTable",
+                  "glue:BatchDeleteTable",
+                  "glue:UpdateTable",
+                  "glue:GetTable",
+                  "glue:GetTables",
+                  "glue:BatchCreatePartition",
+                  "glue:CreatePartition",
+                  "glue:DeletePartition",
+                  "glue:BatchDeletePartition",
+                  "glue:UpdatePartition",
+                  "glue:GetPartition",
+                  "glue:GetPartitions",
+                  "glue:BatchGetPartition"
+              ],
+              "Resource": [
+                  "arn:aws:glue:<region>:<user-account>:catalog",
+                  "arn:aws:glue:<region>:<user-account>:database/<glue_database>",
+                  "arn:aws:glue:<region>:<user-account>:table/<glue_datebase>/*"
+              ]
+      ]
+  }
+  ```
+
+</Accordion>
+
+### Create an IAM user: `kaldea-user`
+
+This IAM user is to be used for all users as default.
+
+`kaldea-user` requires the following permissions :
+
+<Accordion title= "All athena action on the specific workgroup.">
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "athena:ListEngineVersions",
+                "athena:ListWorkGroups",
+                "athena:ListDataCatalogs",
+                "athena:ListDatabases",
+                "athena:GetDatabase",
+                "athena:ListTableMetadata",
+                "athena:GetTableMetadata"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "athena:BatchGetQueryExecution",
+                "athena:GetQueryExecution",
+                "athena:ListQueryExecutions",
+                "athena:StartQueryExecution",
+                "athena:StopQueryExecution",
+                "athena:GetQueryResults",
+                "athena:GetQueryResultsStream",
+                "athena:CreateNamedQuery",
+                "athena:GetNamedQuery",
+                "athena:BatchGetNamedQuery",
+                "athena:ListNamedQueries",
+                "athena:DeleteNamedQuery",
+                "athena:CreatePreparedStatement",
+                "athena:GetPreparedStatement",
+                "athena:ListPreparedStatements",
+                "athena:UpdatePreparedStatement",
+                "athena:DeletePreparedStatement",
+                "athena:GetQueryRuntimeStatistics"
+            ],
+            "Resource": [
+                "arn:aws:athena:<region>:<user-account>:workgroup/<workgroup-name>"
+            ]
+        }
+    }
+```
+
+</Accordion>
+
+<Accordion title="S3 action to S3 bucket on the 'all S3 buckets that needs to be accessed from
+  Athena'">
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetBucketLocation",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:ListBucketMultipartUploads",
+        "s3:ListMultipartUploadParts",
+        "s3:AbortMultipartUpload",
+        "s3:PutObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::<athena-result-bucket>",
+        "arn:aws:s3:::<athena-result-bucket>/*",
+        "arn:aws:s3:::<athena-table-bucket>",
+        "arn:aws:s3:::<athena-table-bucket>/*",
+        "arn:aws:s3:::<athena-table-bucket2>",
+        "arn:aws:s3:::<athena-table-bucket2>/*"
+      ]
+    }
+  ]
+}
+```
+
+</Accordion>
+
+<Accordion title="Glue permission for glue databases for integration.">
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "glue:CreateDatabase",
+        "glue:DeleteDatabase",
+        "glue:GetDatabase",
+        "glue:GetDatabases",
+        "glue:UpdateDatabase",
+        "glue:CreateTable",
+        "glue:DeleteTable",
+        "glue:BatchDeleteTable",
+        "glue:UpdateTable",
+        "glue:GetTable",
+        "glue:GetTables",
+        "glue:BatchCreatePartition",
+        "glue:CreatePartition",
+        "glue:DeletePartition",
+        "glue:BatchDeletePartition",
+        "glue:UpdatePartition",
+        "glue:GetPartition",
+        "glue:GetPartitions",
+        "glue:BatchGetPartition"
+      ],
+      "Resource": [
+        "arn:aws:glue:<region>:<user-account>:catalog",
+        "arn:aws:glue:<region>:<user-account>:database/<glue_database>",
+        "arn:aws:glue:<region>:<user-account>:table/<glue_datebase>/*"
+      ]
+    }
+  ]
+}
+```
+
+</Accordion>
+
+### Prepare Access Key and Secret pairs
+
+For each IAM user, you must have the `ACCESS_KEY_ID` & `SECRET_ACCESS_KEY`
+ready.
+
+## Integrating within Kaldea Interface
+
+Given the above steps are completed, you now have :
+
+- The name of the workgroup `workgroup_name`
+- The AWS region in use for Athena `AWS_REGION`
+- Access Key Pair for AWS IAM user `kaldea-system`
+- Access Key Pair for AWS IAM user `kaldea-user`
+- ~~ARN for AWS IAM role `kaldea-system`~~
+- ~~ARN for AWS IAM role `kaldea-user`~~
+
+![Choose Athena among the data source options.](/images/athena-1.png)
+
+Choose Athena among the data source options.
+
+![Insert system credentials for the Kaldea’s system access.](/images/athena-2.png)
+
+Insert system credentials for the Kaldea’s system access.
+
+![Insert the default credential for all Kaldea users.](/images/athena-3.png)
+
+Insert the default credential for all Kaldea users.

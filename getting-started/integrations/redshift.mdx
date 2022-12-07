@@ -1,0 +1,153 @@
+---
+title: "Redshift"
+---
+
+In order to connect your AWS Athena to Kaldea, follow this guideline that will help you register the required IAM role to the system.
+
+## Pre-requisite
+
+- You must create Redshift database users for Kaldea (system/user)
+
+```sql
+CREATE USER "kaldea-system" PASSWORD {Password} SYSLOG ACCESS UNRESTRICTED;
+GRANT SELECT ON pg_catalog.svv_table_info TO "kaldea-system";
+
+// You can adjust the grant options depending on the query and table you want to use in kaldea.
+// https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html
+GRANT CREATE, USAGE ON SCHEMA {SchemaName} TO "kaldea-system";
+GRANT SELECT, INSERT, UPDATE, DELETE, DROP, REFERENCES
+	ON ALL TABLES IN SCHEMA {SchemaName} TO "kaldea-system"
+```
+
+```sql
+CREATE USER "kaldea-user" PASSWORD {Password}
+
+// You can adjust the grant options depending on the query and table you want to use in kaldea.
+// https://docs.aws.amazon.com/redshift/latest/dg/r_GRANT.html
+GRANT CREATE, USAGE ON SCHEMA {SchemaName} TO "kaldea-user";
+GRANT SELECT, INSERT, UPDATE, DELETE, DROP, REFERENCES
+	ON ALL TABLES IN SCHEMA {SchemaName} TO "kaldea-user";
+```
+
+- Your Redshift’s `Region` and `Cluster`
+
+## Configuring IAM users for Kaldea
+
+There are 2 categories of IAM credentials that need to be prepared for Kaldea :
+
+- `kaldea-system`
+- `kaldea-user`
+
+### Create an IAM user: kaldea-system
+
+This IAM user will be used by the Kaldea’s system to retrieve the query history
+
+`kaldea-system` requires the following permissions:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "redshift-data:DescribeStatement",
+                "redshift-data:CancelStatement",
+                "redshift-data:GetStatementResult"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "redshift-data:ListDatabases",
+                "redshift-data:ListSchemas",
+                "redshift-data:ListTables",
+                "redshift-data:DescribeTable",
+                "redshift-data:BatchExecuteStatement",
+                "redshift-data:ExecuteStatement"
+            ],
+            "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
+						//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "redshift:GetClusterCredentials",
+            "Resource": [
+								"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+								"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+                //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
+                //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_system"
+            ]
+        }
+    ]
+}
+```
+
+### Create an IAM user: kaldea-user
+
+This IAM user is to be used for all users as default.
+
+`kaldea-user` requires the following permissions:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "redshift-data:DescribeStatement",
+                "redshift-data:CancelStatement",
+                "redshift-data:GetStatementResult"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "redshift-data:ListDatabases",
+                "redshift-data:BatchExecuteStatement",
+                "redshift-data:ExecuteStatement"
+            ],
+            "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
+						//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "redshift:GetClusterCredentials",
+            "Resource": [
+								"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+								"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+                //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
+                //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_user"
+            ]
+        }
+    ]
+}
+```
+
+### Prepare Access Key and Secret pairs
+
+For each IAM user, you must have the `ACCESS_KEY` & `SECRET_KEY` ready.
+
+## Integrating within Kaldea interface
+
+Given the above steps are completed, you now have:
+
+- Access Key Pair for AWS IAM user `kaldea-system`
+- Access Key Pair for AWS IAM user `kaldea-user`
+- Your Redshift’s `region` and `cluster`
+- Database and database users `kaldea_system` and `kaldea_user`
+
+![Choose Redshift among the data source options.](/images/redshift-1.png)
+
+Choose Redshift among the data source options.
+
+![Insert system credentials for the Kaldea’s system access.](/images/redshift-2.png)
+
+Insert system credentials for the Kaldea’s system access.
+
+![Insert the default credential for all Kaldea users.](/images/redshift-3.png)
+
+Insert the default credential for all Kaldea users.
