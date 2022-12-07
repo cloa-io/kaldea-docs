@@ -1,0 +1,103 @@
+---
+title: "BigQuery"
+---
+
+To connect BigQuery to Kaldea, you will need Admin access to your BigQuery instance.
+
+<Accordion title="Before you start">
+
+1. The following guide assumes you're an Organization Admin. Otherwise you won't see these options.
+
+2. Once you have integrated your data source, the catalog's lineage building may take a few hours to a day depending on your table count and query history. We recommend coming back the next day to start using Kaldea.
+
+</Accordion>
+
+Complete all of the following steps to see BigQuery metadata in Kaldea:
+
+1. Create a service account for Kaldea
+2. Create a new JSON key
+3. Connect BigQuery to Kaldea
+4. Choose databases and schemas
+
+## High Level Scope on Kaldea Integration
+
+Kaldea operates on BigQuery using the Google Cloud SDK. Hence it is necessary to
+grant Kaldea an adequate access to your Google Cloud Accounts.
+
+There are 3 types of credentials that Kaldea may need :
+
+1. `kaldea-system` : The credential used by Kaldea system
+2. `kaldea-default` : The default credential used by Kaldea for the user action.
+   Can be overriden by personal.
+3. `personal` : The personalised credential to be registered at the personal
+   settings page. To be used by personnel that requires additional access
+   (optional)
+
+### Required Permission : `kaldea-system`
+
+1. Create `kaldea-system.pii-management` role on GCP. (Project Level)
+
+   ```yaml
+   bigquery.tables.setCategory datacatalog.taxonomies.get
+   datacatalog.taxonomies.list
+   ```
+
+2. Create `kaldea-system.bigquery-jobs` role on GCP.
+
+   ```yaml
+   bigquery.jobs.create bigquery.jobs.get bigquery.jobs.list
+   bigquery.jobs.listAll bigquery.jobs.update
+   ```
+
+3. Create serviceaccount for kaldea system and attach the roles :
+   1. `kaldea-system.pii-management`
+   2. `kaldea-system.bigquery-jobs`
+   3. `bigquery.dataEditor`
+      1. (This pre-defined role from GCP is also a requirement!)
+   4. Optional (External Table)
+      1. `storage.objectViewer`
+         1. (This pre-defined role from GCP is also a requirement if you are
+            using an external table with gcs)
+      2. `bigtable.reader`
+         1. (This pre-defined role from GCP is also a requirementIf you are
+            using an external table with bigtable)
+
+### Required Permission : `kaldea-default`
+
+1. Create `kaldea.bigquery-jobs` role on GCP.
+
+   ```yaml
+   bigquery.jobs.create bigquery.jobs.get bigquery.jobs.list
+   bigquery.jobs.listAll bigquery.jobs.update
+   ```
+
+2. Create serviceaccount for kaldea system and attach the roles :
+   1. `kaldea-system.bigquery-jobs`
+   2. `bigquery.dataEditor`
+      1. (This pre-defined role from GCP is also a requirement!)
+   3. Optional (External Table)
+      1. `storage.objectViewer`
+         1. (This pre-defined role from GCP is also a requirement if you are
+            using an external table with gcs)
+      2. `bigtable.reader`
+         1. (This pre-defined role from GCP is also a requirementIf you are
+            using an external table with bigtable)
+
+### Required Permission for : personal
+
+You need a superset of the permission provided for `kaldea-default`.
+
+For those who needs access to _columns access-controlled by policy tags_,
+Fine-Grained Reader role is required. Please refer to the
+[background information above](https://www.notion.so/BigQuery-Integration-Guide-ba87af74dbe344d5aacf158610378860).
+
+---
+
+## Integrating within Kaldea Interface
+
+Given the above steps are completed, you now have :
+
+- Credential key(.json) for `kaldea-system`
+- Credential key(.json) for `kaldea-default`
+
+![](/images/bigquery)

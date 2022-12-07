@@ -1,0 +1,46 @@
+---
+title: "Onboarding Doc for Running Query"
+sidebarTitle: "Building Notebook"
+---
+
+### 1. Locating the Data You Need
+
+Click on the page link below to explore relevant tables and terms.
+
+global_goods_production : 테이블 링크하기
+
+### 2. Running a Query within Workspace
+
+In this exercise, you will practice running a query in your workspace page.
+
+‘/+enter’ or type ‘/’ then select ‘query block’ in the list.
+
+<Info>Not sure what to do? Check Andy's comments for additional hints.</Info>
+
+- Run Query here to view query results.
+
+```sql
+SELECT * FROM `lago-dev1.kaldea_private_dataset.global_goods_production` LIMIT 10
+```
+
+### 2.1 Visualize your query result
+
+- Calculate the goods on production, by running a query for
+  global_goods_production.
+
+```sql
+SELECT goods
+      , COUNT(*) AS cnt
+FROM `lago-dev1.kaldea_private_dataset.global_goods_production`
+WHERE type = 'mining'
+GROUP BY 1
+ORDER BY 1
+```
+
+- To visualize the query result as a chart, click on the ‘Add Chart’ then
+  dropdown field for x-axis and y-axis.
+- Click a query block menu then select ‘hide logic’.
+
+### 3. Share your teammate
+
+Click the ‘Share’ and designate your colleague

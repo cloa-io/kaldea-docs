@@ -1,0 +1,291 @@
+---
+title: Kaldea Crash Course
+sidebarTitle: Introduction
+description: Welcome to the Kaldea documentation hub
+---
+
+## Connecting to your datasource
+
+<Card
+  title="Connecting to your datasource"
+  icon="plug"
+  href="/getting-started/connecting"
+>
+  Setup your connection with Kaldea
+</Card>
+
+## Integrations
+
+<CardGroup cols={2}>
+
+<Card
+  title="BigQuery"
+  href="/getting-started/integrations/bigquery"
+  icon={
+    <svg
+      class="h-7 w-7"
+      xmlns="http://www.w3.org/2000/svg"
+      width="64"
+      height="64"
+      viewBox="0 0 64 64"
+    >
+      <path
+        d="M14.48 58.196L.558 34.082c-.744-1.288-.744-2.876 0-4.164L14.48 5.805c.743-1.287 2.115-2.08 3.6-2.082h27.857c1.48.007 2.845.8 3.585 2.082l13.92 24.113c.744 1.288.744 2.876 0 4.164L49.52 58.196c-.743 1.287-2.115 2.08-3.6 2.082H18.07c-1.483-.005-2.85-.798-3.593-2.082z"
+        fill="#4386fa"
+      />
+      <path
+        d="M40.697 24.235s3.87 9.283-1.406 14.545-14.883 1.894-14.883 1.894L43.95 60.27h1.984c1.486-.002 2.858-.796 3.6-2.082L58.75 42.23z"
+        opacity=".1"
+      />
+      <path
+        d="M45.267 43.23L41 38.953a.67.67 0 0 0-.158-.12 11.63 11.63 0 1 0-2.032 2.037.67.67 0 0 0 .113.15l4.277 4.277a.67.67 0 0 0 .947 0l1.12-1.12a.67.67 0 0 0 0-.947zM31.64 40.464a8.75 8.75 0 1 1 8.749-8.749 8.75 8.75 0 0 1-8.749 8.749zm-5.593-9.216v3.616c.557.983 1.363 1.803 2.338 2.375v-6.013zm4.375-2.998v9.772a6.45 6.45 0 0 0 2.338 0V28.25zm6.764 6.606v-2.142H34.85v4.5a6.43 6.43 0 0 0 2.338-2.368z"
+        fill="#fff"
+      />
+    </svg>
+  }
+></Card>
+
+<Card
+  title="Snowflake"
+  href="/getting-started/integrations/snowflake"
+  icon={
+    <svg
+      class="h-7 w-7"
+      viewBox="0 0 125 122"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M41.7447 63.2298C42.0093 62.4201 42.1194 61.586 42.0996 60.7623C42.0689 60.1658 41.9894 59.5702 41.8151 58.9737C41.2905 57.122 40.048 55.4677 38.1861 54.4248L11.7045 39.5708C7.96616 37.4805 3.20025 38.7235 1.05478 42.3497C-1.11146 45.9706 0.166248 50.595 3.90457 52.6906L18.7026 61.0044L3.90457 69.2954C0.166248 71.3944 -1.10695 76.0197 1.05478 79.6556C3.20025 83.2722 7.96616 84.509 11.7045 82.4187L38.1861 67.5551C39.9731 66.556 41.1858 64.9894 41.7447 63.2298ZM48.9315 77.1495C47.41 77.0232 45.828 77.3337 44.4049 78.139L17.9034 92.9833C14.175 95.078 12.9018 99.727 15.0536 103.354C17.2153 106.971 21.9767 108.217 25.6997 106.113L40.5474 97.7928V114.418C40.5474 118.606 44.0356 122 48.3527 122C52.6491 122 56.1481 118.606 56.1481 114.418V84.6976C56.1481 80.7073 52.9642 77.4302 48.9315 77.1495ZM76.0714 44.8496C77.5884 44.9715 79.1659 44.6566 80.589 43.861L107.085 29.0027C110.819 26.9071 112.086 22.2774 109.939 18.6407C107.788 15.0206 103.022 13.7786 99.2941 15.8724L84.4564 24.2019V7.57171C84.4564 3.39464 80.9682 0 76.6511 0C72.3339 0 68.8548 3.39464 68.8548 7.57171V37.2919C68.8548 41.2778 72.0296 44.5601 76.0714 44.8496ZM17.9034 29.0027L44.4049 43.861C45.828 44.6566 47.41 44.9715 48.9315 44.8496C52.9642 44.5601 56.1481 41.2778 56.1481 37.2919V7.57171C56.1481 3.39464 52.6491 0 48.3527 0C44.0356 0 40.5474 3.39464 40.5474 7.57171V24.2019L25.6997 15.8724C21.9767 13.7786 17.2153 15.0206 15.0536 18.6407C12.9018 22.2774 14.175 26.9071 17.9034 29.0027ZM67.7071 60.9421C67.7071 60.5105 67.438 59.9088 67.1238 59.5895L63.9345 56.5054C63.6202 56.201 63.0008 55.9484 62.5556 55.9484H62.4319C61.9876 55.9484 61.3691 56.201 61.0594 56.5054L57.8701 59.5895C57.5504 59.9088 57.3057 60.5105 57.3057 60.9421V61.0632C57.3057 61.4895 57.5504 62.0859 57.8701 62.3965L61.0594 65.4893C61.3736 65.7946 61.9876 66.0464 62.4319 66.0464H62.5556C63.0008 66.0464 63.6202 65.7946 63.9345 65.4893L67.1238 62.3965C67.438 62.0859 67.7071 61.4895 67.7071 61.0632V60.9421ZM76.5111 63.9087L65.4966 74.5952C65.1815 74.9093 64.5729 75.1663 64.1141 75.1663H63.315H61.6878H60.8752C60.43 75.1663 59.8115 74.9093 59.4918 74.5952L48.4827 63.9087C48.1676 63.6078 47.9129 63.0026 47.9129 62.5754V61.7851V60.2044V59.4246C47.9129 58.9878 48.1676 58.3817 48.4827 58.0764L59.4918 47.3907C59.8115 47.0758 60.43 46.8285 60.8752 46.8285H61.6878H63.315H64.1141C64.5629 46.8285 65.1815 47.0758 65.4966 47.3907L76.5111 58.0764C76.8253 58.3817 77.08 58.9878 77.08 59.4246V60.2044V61.7851V62.5754C77.08 63.0026 76.8253 63.6078 76.5111 63.9087ZM107.085 92.9833L80.589 78.139C79.1659 77.3337 77.5884 77.0232 76.0714 77.1495C72.0296 77.4302 68.8548 80.7073 68.8548 84.6976V114.418C68.8548 118.606 72.3339 122 76.6511 122C80.9682 122 84.4564 118.606 84.4564 114.418V97.7928L99.2941 106.113C103.022 108.217 107.788 106.971 109.939 103.354C112.086 99.727 110.819 95.078 107.085 92.9833ZM121.095 52.6906L106.296 61.0044L121.095 69.2954C124.832 71.3944 126.11 76.0197 123.949 79.6556C121.793 83.2722 117.022 84.509 113.298 82.4187L86.7969 67.5551C85.0298 66.556 83.8026 64.9894 83.2581 63.2298C82.999 62.4201 82.8789 61.586 82.9087 60.7623C82.924 60.1658 83.0134 59.5702 83.1832 58.9737C83.7132 57.122 84.9557 55.4686 86.7969 54.4248L113.298 39.5708C117.022 37.4805 121.793 38.7235 123.949 42.3497C126.11 45.9706 124.832 50.595 121.095 52.6906Z"
+        fill="#29B5E8"
+      />
+    </svg>
+  }
+></Card>
+
+<Card
+  title="Athena"
+  href="/getting-started/integrations/athena"
+  icon={
+    <svg
+      className="h-7 w-7"
+      width="85"
+      height="85"
+      viewBox="0 0 85 85"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M82.5 50.856L42.5 45.875L2.5 50.856L42.5 82.499L82.5 50.856Z"
+        fill="#FCBF92"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M2.5 50.8594L42.5 62.9484V82.5024L2.5 62.2354V50.8594Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M82.5 50.8594L42.5 62.9484V82.5024L82.5 62.2354V50.8594Z"
+        fill="#F58534"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M7.665 33.6719H2.5V45.1669L7.665 46.1179L13.406 39.9609L7.665 33.6729V33.6719Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M13.406 45.6419L7.66504 46.1169V33.6719H13.406V45.6419Z"
+        fill="#F58534"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M17.2771 19.3291L10.4771 20.6251V46.7051L17.2771 48.1311L23.501 33.6641L17.2771 19.3281V19.3291Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M23.4999 47.4171L17.2769 48.1301V19.3281L23.4999 20.0411V47.4171V47.4171Z"
+        fill="#F58534"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M30.535 25.1328L21.147 26.0838V48.9548L30.535 50.8568L40.5 37.9348L30.535 25.1328V25.1328Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M36.8642 49.7868L30.5352 50.8568V25.1328L36.8642 25.6078V49.7858V49.7868Z"
+        fill="#F58534"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M42.4999 4.39062L36.1709 6.41162V51.9276L42.4999 53.2226L48.8289 28.8066L42.4999 4.39062Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M48.3589 49.7906L54.4649 50.8606L63.8529 33.6716L54.4649 16.6016L48.3589 17.5526V49.7906Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M63.8529 33.6716L54.4649 16.6016L48.3589 17.5526"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M61.3818 47.4232L67.7228 48.1362L74.5228 26.4422L67.7228 4.86719L61.3818 6.41219V47.4222V47.4232Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M71.5938 45.638L77.3347 46.113L82.4997 24.658L77.3347 2.5L71.5938 3.926V45.638V45.638Z"
+        fill="#9D5025"
+      />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M42.5 4.39L48.829 6.411V51.927L42.5 53.222V4.39ZM63.853 18.5L54.465 16.598V50.857L63.853 48.955V18.5ZM74.524 7.6L67.724 4.866V48.135L74.524 46.708V7.6ZM82.5 5.103L77.335 2.5V46.114L82.5 45.163V5.103Z"
+        fill="#F58534"
+      />
+    </svg>
+  }
+></Card>
+
+<Card
+  title="Redshift"
+  href="/getting-started/integrations/redshift"
+  icon={
+    <svg
+      class="h-7 w-7"
+      enable-background="new 0 0 1615 1783.7"
+      viewBox="0 0 1615 1783.7"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m807.5 1363.8 678.3 161.5v-1270.5l-678.3 161.5z"
+        fill="#205b97"
+      />
+      <path
+        d="m1485.8 254.8 129.2 64.6v1141.3l-129.2 64.6zm-678.3 1109-678.3 161.5v-1270.5l678.3 161.5z"
+        fill="#5193ce"
+      />
+      <path d="m129.2 254.8-129.2 64.6v1141.3l129.2 64.6z" fill="#205b97" />
+      <path
+        d="m979.8 1783.7 258.4-129.2v-1525.3l-258.4-129.2-79 847z"
+        fill="#5193ce"
+      />
+      <path
+        d="m635.2 1783.7-258.4-129.2v-1525.3l258.4-129.2 79 847z"
+        fill="#205b97"
+      />
+      <path d="m635.2 0h348.1v1780.1h-348.1z" fill="#2e73b7" />
+    </svg>
+  }
+></Card>
+
+</CardGroup>
+
+Coming soon: Postgresql, MYSQL, Clickhouse
+
+Don't see what you are looking for? Cast your vote [here](https://kaldea.canny.io/feature-requests) 👍
+
+## Invite Team
+
+<Card title="Invite team" icon="user-plus" href="/getting-started/invite-team">
+  Add members, admins, readers and groups
+</Card>
+
+## Guides
+
+<CardGroup>
+
+<Card title="Workspace setup" icon="gear" href="/guides/workspace-setup">
+  How to set up your organization with Kaldea
+</Card>
+
+<Card
+  title="Building your first notebook"
+  icon="book-open"
+  href="/guides/building-notebook"
+>
+  On boarding doc for running query
+</Card>
+
+<Card title="Exploring Catalog" icon="books" href="/guides/exploring-catalog">
+  Coming soon
+</Card>
+
+<Card title="Saving Queries" icon="bookmark" href="/guides/saving-queries">
+  Coming soon
+</Card>
+
+<Card title="Creating your first job" icon="plus" href="/creating-first-job">
+  Guide on creating a job
+</Card>
+
+<Card title="Sharing Pages" icon="share" href="/guides/sharing-pages">
+  Guide on sharing a page with others
+</Card>
+
+<Card
+  title="Adding labels to categorize resources"
+  icon="tag"
+  href="/guides/adding-labels"
+>
+  Guide on using labels to categorize resources
+</Card>
+<Card
+  title="Keyboard Shortcuts"
+  icon="keyboard"
+  href="/guides/keyboard-shortcuts"
+>
+  List of keyboard shortcuts on Kaldea
+</Card>
+<Card
+  title="Pre-onboarding discussion"
+  icon="comments"
+  href="/guides/pre-onboarding"
+>
+  In Korean
+</Card>
+
+<Card title="Slack integration" icon="bell" href="/guides/notifications">
+  How to enable Slack notifications
+</Card>
+
+</CardGroup>
+
+## 🙋‍♂️🙋‍♀️ Support
+
+If you do not have a direct channel with us, please contact us through **support@kaldea.com**
+
+## 🔒 Security
+
+<CardGroup>
+  <Card
+    title="How does data flow in Kaldea"
+    icon="arrows-turn-to-dots"
+    href="/security/data-flow"
+  ></Card>
+  <Card title="Security FAQ" icon="lock" href="/security/security-faq"></Card>
+</CardGroup>
