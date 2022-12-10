@@ -35,18 +35,22 @@ There are 3 types of credentials that Kaldea may need :
 
 ### Required Permission : `kaldea-system`
 
-1. Create `kaldea-system.pii-management` role on GCP. (Project Level)
+1. Create `kaldea-system.pii-management` role on GCP. (Project Level) The following is a list of required permissions for managing PII tags:
 
    ```yaml
-   bigquery.tables.setCategory datacatalog.taxonomies.get
+   bigquery.tables.setCategory
+   datacatalog.taxonomies.get
    datacatalog.taxonomies.list
    ```
 
-2. Create `kaldea-system.bigquery-jobs` role on GCP.
+2. Create `kaldea-system.bigquery-jobs` role on GCP. The following is a list of required permissions for managing BigQuery jobs (ex Query):
 
    ```yaml
-   bigquery.jobs.create bigquery.jobs.get bigquery.jobs.list
-   bigquery.jobs.listAll bigquery.jobs.update
+   bigquery.jobs.create
+   bigquery.jobs.get
+   bigquery.jobs.list
+   bigquery.jobs.listAll
+   bigquery.jobs.update
    ```
 
 3. Create serviceaccount for kaldea system and attach the roles :
@@ -64,11 +68,14 @@ There are 3 types of credentials that Kaldea may need :
 
 ### Required Permission : `kaldea-default`
 
-1. Create `kaldea.bigquery-jobs` role on GCP.
+1. Create `kaldea.bigquery-jobs` role on GCP. The following is a list of required permissions for managing BigQuery jobs:
 
    ```yaml
-   bigquery.jobs.create bigquery.jobs.get bigquery.jobs.list
-   bigquery.jobs.listAll bigquery.jobs.update
+   bigquery.jobs.create
+   bigquery.jobs.get
+   bigquery.jobs.list
+   bigquery.jobs.listAll
+   bigquery.jobs.update
    ```
 
 2. Create serviceaccount for kaldea system and attach the roles :
