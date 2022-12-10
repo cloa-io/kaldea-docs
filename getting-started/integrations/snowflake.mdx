@@ -79,7 +79,8 @@ GRANT ROLE kaldea_system_role TO USER kaldea_system;
   <Accordion title="What if I don’t see any assets from a particular database or schema?">
     Check the grants on the role attached to the user of the credential, and check if the missing database or schema is present in them.
 
-```SQL SHOW GRANTS TO ROLE kaldea_system_role;
+```SQL 
+    SHOW GRANTS TO ROLE kaldea_system_role;
 ```
   </Accordion>
   <Accordion title="Why are new tables or views not being fetched by the workflow?">
@@ -94,7 +95,6 @@ GRANT SELECT, REFERENCES ON FUTURE MATERIALIZED VIEWS IN DATABASE "<database-nam
   </Accordion>
   <Accordion
     title="Do I need to whitelist the Kaldea IP?"
-    icon="alien-8bit"
   >
     Yes, if you’re using IP Allowlist in your Snowflake instance.
   </Accordion>
