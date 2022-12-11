@@ -16,12 +16,14 @@ To connect Snowflake to Kaldea, you will need Admin access to your Snowflake ins
 Complete all of the following steps to see Snowflake metadata in Kaldea:
 
 1. Create a Kaldea role and user in Snowflake
-2. Grant additional permissions for faster metadata and preview access
-3. Connect Snowflake to Kaldea
-4. Choose databases and schemas
+2. Create Kaldea system credential in Snowflake
+3. Add users with proper roles in Snowflake
+4. Connect to Kaldea with the created user credentials
+
 
 ---
-#### Create Kaldea user credential in Snowflake
+### 1. Create Kaldea user in Snowflake
+Using the `ACCOUNT_ADMIN` role, execute the following SQL:
 ```SQL
 CREATE OR REPLACE ROLE kaldea_user_role;
 /* Permission to operate a warehouse for querying and crawling */
@@ -49,7 +51,7 @@ GRANT USAGE ON FUTURE PROCEDURES IN DATABASE "<database-name>" TO ROLE kaldea_us
 /* Permission to enable Snowflake Query History based lineage must use `ACCOUNTADMIN` role */
 GRANT IMPORTED PRIVILEGES ON DATABASE snowflake TO ROLE kaldea_system_role
 ```
-#### Create Kaldea system credential in Snowflake
+### 2. Create Kaldea system credential in Snowflake
 ```SQL kaldea_system_role.sql
 CREATE OR REPLACE ROLE kaldea_system_role;
 GRANT ROLE kaldea_user_role to ROLE kaldea_system_role;
@@ -62,7 +64,7 @@ GRANT APPLY TAG ON ACCOUNT TO ROLE kaldea_system_role;
 /* Permission to manage PII tags */
 GRANT APPLY MASKING POLICY ON ACCOUNT TO ROLE kaldea_system_role;
 ```
-#### Add users with proper roles in Snowflake
+### 3. Add users with proper roles in Snowflake
 Create the kaldea default user
 ```SQL kaldea_user.sql
 CREATE USER kaldea_user password='<password>' default_role = kaldea_user_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea User';
@@ -73,9 +75,9 @@ Create the kaldea system user
 CREATE USER kaldea_system password='<password>' default_role = kaldea_system_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea System';
 GRANT ROLE kaldea_system_role TO USER kaldea_system;
 ```
-#### Connect to Kaldea with the created user credentials
+### 4.Connect to Kaldea with the created user credentials
 
-## FAQs
+# FAQs
 <AccordionGroup>
   <Accordion title="What if I don’t see any assets from a particular database or schema?">
     Check the grants on the role attached to the user of the credential, and check if the missing database or schema is present in them.
