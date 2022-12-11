@@ -24,7 +24,7 @@ Complete all of the following steps to see Snowflake metadata in Kaldea:
 ---
 ### 1. Create Kaldea user in Snowflake
 Using the `ACCOUNT_ADMIN` role, execute the following SQL:
-```SQL
+```SQL SQL
 CREATE OR REPLACE ROLE kaldea_user_role;
 /* Permission to operate a warehouse for querying and crawling */
 GRANT OPERATE, USAGE ON WAREHOUSE "<warehouse-name>" TO ROLE kaldea_user_role;
@@ -52,7 +52,7 @@ GRANT USAGE ON FUTURE PROCEDURES IN DATABASE "<database-name>" TO ROLE kaldea_us
 GRANT IMPORTED PRIVILEGES ON DATABASE snowflake TO ROLE kaldea_system_role
 ```
 ### 2. Create Kaldea system credential in Snowflake
-```SQL kaldea_system_role.sql
+```SQL SQL
 CREATE OR REPLACE ROLE kaldea_system_role;
 GRANT ROLE kaldea_user_role to ROLE kaldea_system_role;
 
@@ -66,12 +66,12 @@ GRANT APPLY MASKING POLICY ON ACCOUNT TO ROLE kaldea_system_role;
 ```
 ### 3. Add users with proper roles in Snowflake
 Create the kaldea default user
-```SQL kaldea_user.sql
+```SQL SQL
 CREATE USER kaldea_user password='<password>' default_role = kaldea_user_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea User';
 GRANT ROLE kaldea_user_role TO USER kaldea_user;
 ```
 Create the kaldea system user
-```SQL kaldea_system.sql
+```SQL SQL
 CREATE USER kaldea_system password='<password>' default_role = kaldea_system_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea System';
 GRANT ROLE kaldea_system_role TO USER kaldea_system;
 ```
