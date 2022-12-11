@@ -22,7 +22,7 @@ Complete all of the following steps to see Snowflake metadata in Kaldea:
 
 
 ---
-### 1. Create Kaldea user in Snowflake
+## 1. Create Kaldea user in Snowflake
 Using the `ACCOUNT_ADMIN` role, execute the following SQL:
 ```SQL SQL
 CREATE OR REPLACE ROLE kaldea_user_role;
@@ -51,7 +51,7 @@ GRANT USAGE ON FUTURE PROCEDURES IN DATABASE "<database-name>" TO ROLE kaldea_us
 /* Permission to enable Snowflake Query History based lineage must use `ACCOUNTADMIN` role */
 GRANT IMPORTED PRIVILEGES ON DATABASE snowflake TO ROLE kaldea_system_role
 ```
-### 2. Create Kaldea system credential in Snowflake
+## 2. Create Kaldea system credential in Snowflake
 ```SQL SQL
 CREATE OR REPLACE ROLE kaldea_system_role;
 GRANT ROLE kaldea_user_role to ROLE kaldea_system_role;
@@ -64,7 +64,7 @@ GRANT APPLY TAG ON ACCOUNT TO ROLE kaldea_system_role;
 /* Permission to manage PII tags */
 GRANT APPLY MASKING POLICY ON ACCOUNT TO ROLE kaldea_system_role;
 ```
-### 3. Add users with proper roles in Snowflake
+## 3. Add users with proper roles in Snowflake
 Create the kaldea default user
 ```SQL SQL
 CREATE USER kaldea_user password='<password>' default_role = kaldea_user_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea User';
@@ -75,7 +75,10 @@ Create the kaldea system user
 CREATE USER kaldea_system password='<password>' default_role = kaldea_system_role default_warehouse = '<warehouse-name>'  display_name = 'Kaldea System';
 GRANT ROLE kaldea_system_role TO USER kaldea_system;
 ```
-### 4.Connect to Kaldea with the created user credentials
+## 4.Connect Snowflake to Kaldea
+Go to Kaldea Settings. Click `+ Add Datasource' in the sidebar to create a new Data Source. Use user credentials you have already created to fill in the necessary input fields. 
+
+---
 
 # FAQs
 <AccordionGroup>
