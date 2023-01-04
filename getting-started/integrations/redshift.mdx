@@ -46,41 +46,41 @@ This IAM user will be used by the Kaldea’s system to retrieve the query histor
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "redshift-data:DescribeStatement",
-                "redshift-data:CancelStatement",
-                "redshift-data:GetStatementResult"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "redshift-data:ListDatabases",
-                "redshift-data:ListSchemas",
-                "redshift-data:ListTables",
-                "redshift-data:DescribeTable",
-                "redshift-data:BatchExecuteStatement",
-                "redshift-data:ExecuteStatement"
-            ],
-            "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
-		//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "redshift:GetClusterCredentials",
-            "Resource": [
-		"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
-		"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
-                //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
-                //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_system"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "redshift-data:DescribeStatement",
+          "redshift-data:CancelStatement",
+          "redshift-data:GetStatementResult"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "redshift-data:ListDatabases",
+          "redshift-data:ListSchemas",
+          "redshift-data:ListTables",
+          "redshift-data:DescribeTable",
+          "redshift-data:BatchExecuteStatement",
+          "redshift-data:ExecuteStatement"
+      ],
+      "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
+      //"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "redshift:GetClusterCredentials",
+      "Resource": [
+	      "arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+		  "arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+          //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
+          //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_system"
+      ]
+    }
+  ]
 }
 ```
 
@@ -92,38 +92,38 @@ This IAM user is to be used for all users as default.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "redshift-data:DescribeStatement",
-                "redshift-data:CancelStatement",
-                "redshift-data:GetStatementResult"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "redshift-data:ListDatabases",
-                "redshift-data:BatchExecuteStatement",
-                "redshift-data:ExecuteStatement"
-            ],
-            "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
-		//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
-        },
-        {
-            "Effect": "Allow",
-            "Action": "redshift:GetClusterCredentials",
-            "Resource": [
-		"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
-		"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
-                //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
-                //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_user"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "redshift-data:DescribeStatement",
+          "redshift-data:CancelStatement",
+          "redshift-data:GetStatementResult"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "redshift-data:ListDatabases",
+          "redshift-data:BatchExecuteStatement",
+          "redshift-data:ExecuteStatement"
+      ],
+      "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
+      //"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "redshift:GetClusterCredentials",
+      "Resource": [
+          "arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+          "arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+          //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
+          //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_user"
+      ]
+    }
+  ]
 }
 ```
 

@@ -40,14 +40,14 @@ This IAM user will be used by the Kaldea’s system to retrieve the query histor
 <Accordion title="All athena action on all Athena resources" >
 ```json
 {
-"Version": "2012-10-17",
-"Statement": [
+  "Version": "2012-10-17",
+  "Statement": [
     {
-    "Effect": "Allow",
-    "Action": ["athena:*"],
-    "Resource": ["*"]
+      "Effect": "Allow",
+      "Action": ["athena:*"],
+      "Resource": ["*"]
     }
-]
+  ]
 }
 ```
 </Accordion>
@@ -57,68 +57,71 @@ This IAM user will be used by the Kaldea’s system to retrieve the query histor
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-       {
-            "Effect": "Allow",
-            "Action": [
-                "s3:GetBucketLocation",
-                "s3:GetObject",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListMultipartUploadParts",
-                "s3:AbortMultipartUpload",
-                "s3:PutObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::<athena-result-bucket>",
-                "arn:aws:s3:::<athena-result-bucket>/*",
-                "arn:aws:s3:::<athena-table-bucket>",
-                "arn:aws:s3:::<athena-table-bucket>/*",
-                "arn:aws:s3:::<athena-table-bucket2>",
-                "arn:aws:s3:::<athena-table-bucket2>/*"
-            ]
-        }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "s3:GetBucketLocation",
+          "s3:GetObject",
+          "s3:ListBucket",
+          "s3:ListBucketMultipartUploads",
+          "s3:ListMultipartUploadParts",
+          "s3:AbortMultipartUpload",
+          "s3:PutObject"
+      ],
+      "Resource": [
+          "arn:aws:s3:::<athena-result-bucket>",
+          "arn:aws:s3:::<athena-result-bucket>/*",
+          "arn:aws:s3:::<athena-table-bucket>",
+          "arn:aws:s3:::<athena-table-bucket>/*",
+          "arn:aws:s3:::<athena-table-bucket2>",
+          "arn:aws:s3:::<athena-table-bucket2>/*"
+      ]
+    }
+  ]
 }
 ```
 
 </Accordion>
 
 <Accordion title="Glue permission for glue databases for integration.">
-  ```json
-  {
-      "Version": "2012-10-17",
-      "Statement": [
-              "Effect": "Allow",
-              "Action": [
-                  "glue:CreateDatabase",
-                  "glue:DeleteDatabase",
-                  "glue:GetDatabase",
-                  "glue:GetDatabases",
-                  "glue:UpdateDatabase",
-                  "glue:CreateTable",
-                  "glue:DeleteTable",
-                  "glue:BatchDeleteTable",
-                  "glue:UpdateTable",
-                  "glue:GetTable",
-                  "glue:GetTables",
-                  "glue:BatchCreatePartition",
-                  "glue:CreatePartition",
-                  "glue:DeletePartition",
-                  "glue:BatchDeletePartition",
-                  "glue:UpdatePartition",
-                  "glue:GetPartition",
-                  "glue:GetPartitions",
-                  "glue:BatchGetPartition"
-              ],
-              "Resource": [
-                  "arn:aws:glue:<region>:<user-account>:catalog",
-                  "arn:aws:glue:<region>:<user-account>:database/<glue_database>",
-                  "arn:aws:glue:<region>:<user-account>:table/<glue_datebase>/*"
-              ]
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "glue:CreateDatabase",
+          "glue:DeleteDatabase",
+          "glue:GetDatabase",
+          "glue:GetDatabases",
+          "glue:UpdateDatabase",
+          "glue:CreateTable",
+          "glue:DeleteTable",
+          "glue:BatchDeleteTable",
+          "glue:UpdateTable",
+          "glue:GetTable",
+          "glue:GetTables",
+          "glue:BatchCreatePartition",
+          "glue:CreatePartition",
+          "glue:DeletePartition",
+          "glue:BatchDeletePartition",
+          "glue:UpdatePartition",
+          "glue:GetPartition",
+          "glue:GetPartitions",
+          "glue:BatchGetPartition"
+      ],
+      "Resource": [
+          "arn:aws:glue:<region>:<user-account>:catalog",
+          "arn:aws:glue:<region>:<user-account>:database/<glue_database>",
+          "arn:aws:glue:<region>:<user-account>:table/<glue_datebase>/*"
       ]
-  }
-  ```
+    }
+  ]
+}
+```
 
 </Accordion>
 
@@ -132,48 +135,49 @@ This IAM user is to be used for all users as default.
 
 ```json
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "athena:ListEngineVersions",
-                "athena:ListWorkGroups",
-                "athena:ListDataCatalogs",
-                "athena:ListDatabases",
-                "athena:GetDatabase",
-                "athena:ListTableMetadata",
-                "athena:GetTableMetadata"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "athena:BatchGetQueryExecution",
-                "athena:GetQueryExecution",
-                "athena:ListQueryExecutions",
-                "athena:StartQueryExecution",
-                "athena:StopQueryExecution",
-                "athena:GetQueryResults",
-                "athena:GetQueryResultsStream",
-                "athena:CreateNamedQuery",
-                "athena:GetNamedQuery",
-                "athena:BatchGetNamedQuery",
-                "athena:ListNamedQueries",
-                "athena:DeleteNamedQuery",
-                "athena:CreatePreparedStatement",
-                "athena:GetPreparedStatement",
-                "athena:ListPreparedStatements",
-                "athena:UpdatePreparedStatement",
-                "athena:DeletePreparedStatement",
-                "athena:GetQueryRuntimeStatistics"
-            ],
-            "Resource": [
-                "arn:aws:athena:<region>:<user-account>:workgroup/<workgroup-name>"
-            ]
-        }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+          "athena:ListEngineVersions",
+          "athena:ListWorkGroups",
+          "athena:ListDataCatalogs",
+          "athena:ListDatabases",
+          "athena:GetDatabase",
+          "athena:ListTableMetadata",
+          "athena:GetTableMetadata"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "athena:BatchGetQueryExecution",
+          "athena:GetQueryExecution",
+          "athena:ListQueryExecutions",
+          "athena:StartQueryExecution",
+          "athena:StopQueryExecution",
+          "athena:GetQueryResults",
+          "athena:GetQueryResultsStream",
+          "athena:CreateNamedQuery",
+          "athena:GetNamedQuery",
+          "athena:BatchGetNamedQuery",
+          "athena:ListNamedQueries",
+          "athena:DeleteNamedQuery",
+          "athena:CreatePreparedStatement",
+          "athena:GetPreparedStatement",
+          "athena:ListPreparedStatements",
+          "athena:UpdatePreparedStatement",
+          "athena:DeletePreparedStatement",
+          "athena:GetQueryRuntimeStatistics"
+      ],
+      "Resource": [
+          "arn:aws:athena:<region>:<user-account>:workgroup/<workgroup-name>"
+      ]
     }
+  ]
+}
 ```
 
 </Accordion>
