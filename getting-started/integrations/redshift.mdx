@@ -68,14 +68,14 @@ This IAM user will be used by the Kaldea’s system to retrieve the query histor
                 "redshift-data:ExecuteStatement"
             ],
             "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
-						//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+		//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
         },
         {
             "Effect": "Allow",
             "Action": "redshift:GetClusterCredentials",
             "Resource": [
-								"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
-								"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+		"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+		"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
                 //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
                 //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_system"
             ]
@@ -111,14 +111,14 @@ This IAM user is to be used for all users as default.
                 "redshift-data:ExecuteStatement"
             ],
             "Resource": "arn:${Partition}:redshift:${Region}:${Account}:cluster:${ClusterName}"
-						//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
+		//"Resource": "arn:aws:redshift:ap-northeast-2:266501888670:cluster:redshift-cluster"
         },
         {
             "Effect": "Allow",
             "Action": "redshift:GetClusterCredentials",
             "Resource": [
-								"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
-								"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
+		"arn:${Partition}:redshift:${Region}:${Account}:dbname:${ClusterName}/{DatabaseName}"
+		"arn:${Partition}:redshift:${Region}:${Account}:dbuser:${ClusterName}/{DbUser}"
                 //"arn:aws:redshift:ap-northeast-2:266501888670:dbname:redshift-cluster-1/dev",
                 //"arn:aws:redshift:ap-northeast-2:266501888670:dbuser:redshift-cluster-1/kaldea_user"
             ]
