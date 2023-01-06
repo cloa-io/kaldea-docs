@@ -54,19 +54,19 @@
   "navigation": [
     {
       "group": "Getting Started",
+      "pages": ["introduction", "getting-started/invite-team"]
+    },
+    {
+      "group": "Integrations",
       "pages": [
-        "introduction",
-        "getting-started/connecting",
-        {
-          "group": "Integrations",
-          "pages": [
-            "getting-started/integrations/bigquery",
-            "getting-started/integrations/snowflake",
-            "getting-started/integrations/athena",
-            "getting-started/integrations/redshift"
-          ]
-        },
-        "getting-started/invite-team"
+        "integrations/adding-datasource",
+        "integrations/bigquery",
+        "integrations/snowflake",
+        "integrations/athena",
+        "integrations/redshift",
+        "integrations/mysql",
+        "integrations/postgresql",
+        "integrations/hydra"
       ]
     },
     {
