@@ -1,101 +1,106 @@
 {
-	"name": "Kaldea",
-	"logo": {
-		"light": "/logo/light-logo.svg",
-		"dark": "/logo/dark-logo.svg"
-	},
-	"favicon": "/favicon.png",
-	"colors": {
-		"primary": "#32357D",
-		"light": "#989AD0",
-		"dark": "#1B1E5B",
-		"ultraLight": "#DEDDF3",
-		"ultraDark": "#0C0E3E",
-		"background": {
-			"dark": "#141414"
-		},
-		"anchors": {
-			"from": "#989AD0",
-			"to": "#32357D"
-		}
-	},
-	"topbarCtaButton": {
-		"name": "Get Started",
-		"url": "https://app.kaldea.com/signup"
-	},
-	"topbarLinks": [
-		{
-			"name": "Login",
-			"url": "https://app.kaldea.com/"
-		}
-	],
-	"anchors": [
-		{
-			"name": "Changelog",
-			"icon": "list",
-			"url": "changelog"
-		},
-		{
-			"name": "Blog",
-			"icon": "newspaper",
-			"url": "https://blog.kaldea.com/en/blog"
-		},
-		{
-			"name": "Support",
-			"icon": "envelope",
-			"url": "mailto:support@kaldea.com"
-		}
-	],
-	"navigation": [
-		{
-			"group": "Getting Started",
-			"pages": [
-				"introduction",
-				"getting-started/connecting",
-				{
-					"group": "Integrations",
-					"pages": [
-						"getting-started/integrations/bigquery",
-						"getting-started/integrations/snowflake",
-						"getting-started/integrations/athena",
-						"getting-started/integrations/redshift"
-					]
-				},
-				"getting-started/invite-team"
-			]
-		},
-		{
-			"group": "Guides",
-			"pages": [
-				"guides/workspace-setup",
-				"guides/building-notebook",
-				"guides/exploring-catalog",
-				"guides/saving-queries",
-				"guides/creating-first-job",
-				"guides/sharing-pages",
-				"guides/adding-labels",
-				"guides/keyboard-shortcuts",
-				"guides/pre-onboarding",
-				"guides/notifications"
-			]
-		},
-		{
-			"group": "Security",
-			"pages": ["security/data-flow", "security/security-faq"]
-		},
-		{
-			"group": "Changelog",
-			"pages": [
-				"changelog/12-16-2022",
-				"changelog/12-7-2022",
-				"changelog/12-2-2022",
-				"changelog/11-18-2022"
-			]
-		}
-	],
-	"footerSocials": {
-		"linkedin": "https://www.linkedin.com/company/kaldea-data/",
-		"medium": "https://medium.com/kaldea-hq",
-		"website": "https://kaldea.com/"
-	}
+  "name": "Kaldea",
+  "logo": {
+    "light": "/logo/light-logo.svg",
+    "dark": "/logo/dark-logo.svg"
+  },
+  "favicon": "/favicon.png",
+  "colors": {
+    "primary": "#32357D",
+    "light": "#989AD0",
+    "dark": "#1B1E5B",
+    "ultraLight": "#DEDDF3",
+    "ultraDark": "#0C0E3E",
+    "background": {
+      "dark": "#141414"
+    },
+    "anchors": {
+      "from": "#989AD0",
+      "to": "#32357D"
+    }
+  },
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://app.kaldea.com/signup"
+  },
+  "topbarLinks": [
+    {
+      "name": "Login",
+      "url": "https://app.kaldea.com/"
+    }
+  ],
+  "anchors": [
+    {
+      "name": "Changelog",
+      "icon": "list",
+      "url": "changelog"
+    },
+    {
+      "name": "Blog",
+      "icon": "newspaper",
+      "url": "https://blog.kaldea.com/en/blog"
+    },
+    {
+      "name": "Send feedback",
+      "icon": "comments",
+      "url": "https://kaldea.canny.io/feature-requests"
+    },
+    {
+      "name": "Email us",
+      "icon": "envelope",
+      "url": "mailto:support@kaldea.com"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        "introduction",
+        "getting-started/connecting",
+        {
+          "group": "Integrations",
+          "pages": [
+            "getting-started/integrations/bigquery",
+            "getting-started/integrations/snowflake",
+            "getting-started/integrations/athena",
+            "getting-started/integrations/redshift"
+          ]
+        },
+        "getting-started/invite-team"
+      ]
+    },
+    {
+      "group": "Guides",
+      "pages": [
+        "guides/workspace-setup",
+        "guides/building-notebook",
+        "guides/exploring-catalog",
+        "guides/saving-queries",
+        "guides/creating-first-job",
+        "guides/sharing-pages",
+        "guides/adding-labels",
+        "guides/keyboard-shortcuts",
+        "guides/pre-onboarding",
+        "guides/notifications"
+      ]
+    },
+    {
+      "group": "Security",
+      "pages": ["security/data-flow", "security/security-faq"]
+    },
+    {
+      "group": "Changelog",
+      "pages": [
+        "changelog/12-16-2022",
+        "changelog/12-7-2022",
+        "changelog/12-2-2022",
+        "changelog/11-18-2022"
+      ]
+    }
+  ],
+  "footerSocials": {
+    "linkedin": "https://www.linkedin.com/company/kaldea-data/",
+    "medium": "https://medium.com/kaldea-hq",
+    "website": "https://kaldea.com/"
+  }
 }
