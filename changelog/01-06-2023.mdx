@@ -1,0 +1,56 @@
+---
+title: "Jan 6, 2023"
+"og:title": "Changelog of Kaldea, the unified analytics platform"
+"og:description": "Check out Kaldea's product and service journey into developing a seamless and fully connected analytics experience from creating jobs to data discovery to query, and reporting."
+---
+
+## 🎮 Introducing command palette
+
+Some of you may have noticed that Kaldea had a command palette prior to this
+post. But we're officially announcing it today.{" "}
+
+Kaldea's Command Palette comes with over 50 app actions, which let you access all
+of Kaldea’s core functionality in seconds and discover useful features or shortcuts
+you might have missed.
+
+Access the Command Palette with the `Cmd` `K` (Mac) or `Ctrl`
+`K` (Windows) keyboard shortcut. You can navigate your entire organization using
+the Command Palette:
+
+<img
+  src="/changelog/images/01-06-2023/1.gif"
+  style={{ borderRadius: "12px" }}
+/>
+
+You can run the most frequent actions you take in Kaldea without ever leaving your keyboard. Like adding a filter to your saved query list. Here's how that looks in practice:
+
+<img
+  src="/changelog/images/01-06-2023/2.gif"
+  style={{ borderRadius: "12px" }}
+/>
+
+## 💃🕺 Real-time collaboration on pages
+
+Multiple people can see and edit the same page at the same time. You can see which teammates are working on what because their avatars will appear next to any block they click on.
+
+<img
+  src="/changelog/images/01-06-2023/3.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+## 🐞 Fixes and Improvements
+
+- Improved query result interface for query editor blocks by removing unnecessary drop shadow effect and applying padding between result table and pagination
+- Improved query error visibility for editor on query editor and query editor blocks to actually indicate which line is causing the error
+- Fixed a bug when creating tables from query results where the datasource field was incorrectly selected
+- It's now possible to create multiple y-axes in a Pie chart
+- Fixed a bug where the column type was "Date" but could not customize its time unit
+- Fixed a bug where export CSV would recognize commas in JSON string as separators
+- Improved query editor logic, so that autocomplete now returns better predictive results based on input
+- Clicking on the more icon when hovering over pages or folders in the Favorites section no longer displays Delete command
+- Added the ability to toggle block comments in the query editor and query editor block using `Cmd/Ctrl` `/`
+- Improved search result interface to include popularity resource property and display labels according to screen width
+- When creating or editing Job in lineage graph view, Table cards now have tooltips displaying their names so you can view longer table names
+- Optimized history sync pipeline
+- Added the ability for query editor and query editor blocks to reference Google Sheet external tables in queries
+- Fixed rendering performance in list views

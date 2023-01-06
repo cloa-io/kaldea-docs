@@ -91,9 +91,10 @@
     {
       "group": "Changelog",
       "pages": [
+        "changelog/01-06-2023",
         "changelog/12-16-2022",
-        "changelog/12-7-2022",
-        "changelog/12-2-2022",
+        "changelog/12-07-2022",
+        "changelog/12-02-2022",
         "changelog/11-18-2022"
       ]
     }
