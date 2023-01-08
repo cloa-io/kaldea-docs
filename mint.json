@@ -71,7 +71,7 @@
     },
     {
       "group": "Organization setup",
-      "pages": ["setup/workspaces", "setup/invite-team", "setup/labels"]
+      "pages": ["setup/organization", "setup/invite-team", "setup/labels"]
     },
     {
       "group": "Guides",
