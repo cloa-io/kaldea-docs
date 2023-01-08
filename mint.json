@@ -54,7 +54,7 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["introduction", "getting-started/invite-team"]
+      "pages": ["introduction", "getting-started/tutorials"]
     },
     {
       "group": "Integrations",
@@ -70,15 +70,17 @@
       ]
     },
     {
+      "group": "Organization setup",
+      "pages": ["setup/workspaces", "setup/invite-team", "setup/labels"]
+    },
+    {
       "group": "Guides",
       "pages": [
-        "guides/workspace-setup",
         "guides/building-notebook",
         "guides/exploring-catalog",
         "guides/saving-queries",
         "guides/creating-first-job",
         "guides/sharing-pages",
-        "guides/adding-labels",
         "guides/keyboard-shortcuts",
         "guides/pre-onboarding",
         "guides/notifications"
