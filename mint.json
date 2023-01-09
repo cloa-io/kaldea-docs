@@ -54,7 +54,17 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["introduction", "getting-started/tutorials"]
+      "pages": [
+        "introduction",
+        {
+          "group": "Tutorials",
+          "pages": [
+            "getting-started/tutorials/overview",
+            "getting-started/tutorials/pages",
+            "getting-started/tutorials/run-queries"
+          ]
+        }
+      ]
     },
     {
       "group": "Integrations",
@@ -76,7 +86,6 @@
     {
       "group": "Guides",
       "pages": [
-        "guides/building-notebook",
         "guides/exploring-catalog",
         "guides/saving-queries",
         "guides/creating-first-job",
