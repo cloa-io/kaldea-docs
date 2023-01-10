@@ -70,13 +70,18 @@
       "group": "Integrations",
       "pages": [
         "integrations/adding-datasource",
-        "integrations/bigquery",
-        "integrations/snowflake",
-        "integrations/athena",
-        "integrations/redshift",
-        "integrations/mysql",
-        "integrations/postgresql",
-        "integrations/hydra"
+        {
+          "group": "Data warehouses",
+          "pages": [
+            "integrations/bigquery",
+            "integrations/snowflake",
+            "integrations/athena",
+            "integrations/redshift",
+            "integrations/mysql",
+            "integrations/postgresql",
+            "integrations/hydra"
+          ]
+        }
       ]
     },
     {
