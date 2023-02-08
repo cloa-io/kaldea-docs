@@ -1,0 +1,95 @@
+---
+title: "Feb 2, 2023"
+"og:title": "Changelog of Kaldea, the unified analytics platform"
+"og:description": "Check out Kaldea's product and service journey into developing a seamless and fully connected analytics experience from creating jobs to data discovery to query, and reporting."
+---
+
+## 🦾 Next-level Query Editor
+
+We have released the new Query Editor. Here are the features you can look forward to:
+
+### 🗂️ Tabs in Query Editor
+
+With the new query tab feature, you can easily open new query tabs and switch back and forth between different queries.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/1.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+You can also open query tabs in split view. This feature comes in handy when comparing the results of two queries, especially when you are using a laptop and do not have the luxury of two monitors.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/2.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+### 📊 Chart has come to Query Editor
+
+Previously, charts were only available in Query Editor blocks in `Workspace` -> `Pages`. You can now create chart visualizations in Query Editor too.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/3.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+### ✂️ Query snippet
+
+Query Snippets serve as templates that you can inject into your queries. They are useful for important or commonly used SQL code.
+
+Use the **⌘+⇧+S** on Mac or **ctrl+Shift+S** on Windows to save code from query editor as a query snippet.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/4.gif"
+  style={{ borderRadius: "12px" }}
+/>
+
+Use the `/` shortcut to reference and insert snippets into your editor.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/5.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+### ✏️ UDF: User Defined Functions for BigQuery
+
+We're excited to announce that our Query Editor now supports user-defined functions (UDFs) for BigQuery. UDFs are custom functions that can be used to transform data and perform more complex calculations. This makes it easier to create complex queries and can also help to reduce the amount of code needed to perform the same operation. Additionally, UDFs can provide added flexibility and control over the data returned from a query.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/6.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+You can use the `:` shortcut to quickly reference and insert user-defined functions (UDFs) into your editor.
+
+## 🏠 Saved Query has a new home
+
+Saved Query now lives inside `Query`. Click on the list icon to view a list of **Saved Queries** and **Query Snippets**.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/7.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+## Connect to 🐘 PostgreSQL, 🐬 MySQL in Kaldea
+
+Our list of integrations is growing! We are excited to announce that we have now added **PostgreSQL** and **MySQL** as new datasources. You can now connect to PostgreSQL and MySQL and pull data directly to the Catalog. You can also query your data with SQL within pages or using our powerful _Query Editor_.
+
+<img
+  src="https://assets.cloa.io/changelog/02-02-2023/8.png"
+  style={{ borderRadius: "12px" }}
+/>
+
+With these new datasources, users can access even more data and quickly generate powerful queries. We hope this will help you to make your data analysis and reporting even easier.
+
+## 🐞 Fixes and improvements
+
+- You can now filter global search results without content
+- Guests invited to the page can no longer view the page's popularity score
+- Fixed issue where search results were truncated when the description was longer than one line
+- When users' access control levels (Admin, Author, Viewer) are modified, the new permissions now take effect immediately
+- Queries now display an accurate timestamp in the YYYY-MM-DD format when they have finished executing
+- Fixed a bug where a confirmation modal, "Are you sure you want to leave this page?", would continuously appear without context
+- Improved the Job schedule timezone configuration
+- Fixed an issue where users with usernames longer than 16 characters were unable to log in
+- … and many other bugs 🙂
