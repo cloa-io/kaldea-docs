@@ -1,5 +1,110 @@
 ---
 title: "PostgreSQL"
+description: Follow these steps to connect your PostgreSQL database to Kaldea.
 ---
 
-<Warning>**Content Coming Soon.**</Warning>
+## Requirements
+
+Before you connect PostgreSQL to Kaldea, you will need to know your database information.
+
+### Database information
+
+|                   | Description             | Default |
+| ----------------- | ----------------------- | :-----: |
+| **Host Address**  | Database server address |         |
+| **Port Number**   | Database server port    |  5432   |
+| **Database Name** | Database name           |         |
+
+<Note>
+  If your connection is protected, you might need to Kaldea’s IP addresses to
+  your whitelist. [Read more
+  here](https://www.kaldea.com/docs/integrations/postgresql#troubleshooting)
+</Note>
+
+## Connect PostgreSQL to Kaldea
+
+---
+
+### Step 1
+
+Navigate to `Settings` > `+ Add Datasource` and select PostgreSQL as source **Type\***.
+
+{" "}
+
+<img
+  src="/images/postgresql-1.jpeg"
+  style={{ borderRadius: "4px", border: "1px solid #F3F4F6" }}
+/>
+
+### Step 2
+
+Fill out the form with the necessary information:
+
+- **Name\***: Write a display name for your data source
+- **Host\***: `your-database-server-address-here`
+- **Port\***: `your-database-server-port-here`
+- **Database\***: `your-database-name-here`
+
+#### System Credential
+
+<Info>
+  Kaldea uses this account to synchronize the metadata of customer tables and
+  schedule jobs. It performs queries on system tables and scheduled tables.
+</Info>
+
+- **Username\***: `your-database-account-here`
+- **Password\***: `your-database-password-here`
+- The following grant must be allowed for this user's privileges:
+
+```yml
+GRANT ALL PRIVILEGES
+ON ALL TABLES IN SCHEMA public TO {{your-database-account-here}};
+```
+
+#### User Default Credential
+
+<Info>
+  This account is applied by default when members of your organization query
+  tables in Kaldea.
+</Info>
+
+- **Username**: `your-database-account-here` - **Password**: `your-database-password-here`
+- Set an appropriate account level for your company and add it to the basic user
+  account information.
+
+### Additional User Account Information (Optional)
+
+You can register individual user account information for each member by entering the Credential keys for each member. Navigate to `Settings`>`Members`>`{{User}}`>`…`>`Credential key`. Once the credentials are registered, the registered credentials will always take precedence.
+
+## Troubleshooting
+
+<Accordion
+  title="I cannot connect due to a network firewall (e.g., Security Group)"
+  icon="hand"
+>
+  Kaldea has the following Host IPs. You need to add access to these IPs to your
+  database.{" "}
+  
+  <table>
+    <thead>
+
+        <tr style={{borderBottom : "1.2px solid #e5e7eb"}}>
+        <th style={{ width : "80px"}}></th>
+        <th style={{ width : "125px"}}>IPs</th>
+
+        </tr >
+    </thead>
+    <tbody>
+        <tr style={{borderBottom : "1px solid #e5e7eb70"}}>
+        <th>USA</th>
+        <td>44.197.191.157<br />34.239.228.133</td>
+        </tr>
+        <tr style={{borderBottom : "1px solid #e5e7eb70"}}>
+        <th>INFRA1</th>
+        <td>3.36.90.223<br />3.35.149.224<br />13.125.231.223</td>
+
+        </tr>
+    </tbody>
+
+  </table>
+</Accordion>
