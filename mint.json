@@ -81,6 +81,10 @@
             "integrations/postgresql",
             "integrations/hydra"
           ]
+        },
+        {
+          "group": "Connected apps",
+          "pages": ["integrations/connected-apps/airflow"]
         }
       ]
     },
