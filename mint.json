@@ -54,15 +54,22 @@
   "navigation": [
     {
       "group": "Getting Started",
+      "pages": ["introduction", "getting-started/tutorials"]
+    },
+    {
+      "group": "Features",
       "pages": [
-        "introduction",
         {
-          "group": "Tutorials",
-          "pages": [
-            "getting-started/tutorials/overview",
-            "getting-started/tutorials/pages",
-            "getting-started/tutorials/run-queries"
-          ]
+          "group": "Workspace",
+          "pages": ["workspace/pages"]
+        },
+        {
+          "group": "Query",
+          "pages": ["query/run-queries"]
+        },
+        {
+          "group": "Job",
+          "pages": ["job/creating-first-job", "job/connect-to-airflow"]
         }
       ]
     },
@@ -84,10 +91,7 @@
         },
         {
           "group": "Connected apps",
-          "pages": [
-            "integrations/connected-apps/slack",
-            "integrations/connected-apps/airflow"
-          ]
+          "pages": ["integrations/connected-apps/slack"]
         }
       ]
     },
@@ -100,7 +104,6 @@
       "pages": [
         "guides/exploring-catalog",
         "guides/saving-queries",
-        "guides/creating-first-job",
         "guides/sharing-pages",
         "guides/keyboard-shortcuts",
         "guides/pre-onboarding",
