@@ -5,9 +5,7 @@ description: Follow these steps to connect your PostgreSQL database to Kaldea.
 
 ## Requirements
 
-### Database information
-
-Before you connect PostgreSQL to Kaldea, you will need to know your database information.
+Before you connect PostgreSQL to Kaldea, you will need to know your database information:
 
 |                   | Description             | Default |
 | ----------------- | ----------------------- | :-----: |
@@ -20,13 +18,15 @@ Before you connect PostgreSQL to Kaldea, you will need to know your database inf
   to your whitelist. [Read more here](/integrations/postgresql/#troubleshooting)
 </Note>
 
+---
+
 ## Connect PostgreSQL to Kaldea
+
+Follow these steps to connect your PostgreSQL database to Kaldea.
 
 ### Step 1
 
 Navigate to `Settings` > `+ Add Datasource` and select PostgreSQL as source **Type\***.
-
-{" "}
 
 <img
   src="/images/postgresql-1.jpeg"
@@ -74,7 +74,11 @@ ON ALL TABLES IN SCHEMA public TO {{your-database-account-here}};
 
 You can register individual user account information for each member by entering the Credential keys for each member. Navigate to `Settings`>`Members`>`{{User}}`>`…`>`Credential key`. Once the credentials are registered, the registered credentials will always take precedence.
 
+---
+
 ## Troubleshooting
+
+Here’s how to solve some common problems when connecting PostgreSQL.
 
 <Accordion
   title="I cannot connect due to a network firewall (e.g., Security Group)"
