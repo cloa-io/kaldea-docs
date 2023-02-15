@@ -69,22 +69,25 @@
     {
       "group": "Integrations",
       "pages": [
-        "integrations/adding-datasource",
         {
-          "group": "Data warehouses",
+          "group": "Connect to data",
           "pages": [
+            "integrations/adding-datasource",
             "integrations/bigquery",
             "integrations/snowflake",
             "integrations/athena",
             "integrations/redshift",
-            "integrations/mysql",
             "integrations/postgresql",
+            "integrations/mysql",
             "integrations/hydra"
           ]
         },
         {
           "group": "Connected apps",
-          "pages": ["integrations/connected-apps/airflow"]
+          "pages": [
+            "integrations/connected-apps/slack",
+            "integrations/connected-apps/airflow"
+          ]
         }
       ]
     },
