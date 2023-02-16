@@ -1,5 +1,132 @@
 ---
-title: "Connect Airflow DAGs to Kaldea Jobs"
+title: "Connecting Airflow DAGs to Kaldea Jobs"
+description: Connect Airflow DAGs to Kaldea Job to automatically trigger tasks in Kaldea after an upstream transformation in Airflow is complete.
 ---
 
-<Warning>**Content Coming Soon.**</Warning>
+In Kaldea, **Job** allows you to schedule periodic updates of data tables.
+
+Jobs in Kaldea can be connected to Airflow, allowing Airflow tasks to trigger their subsequent tasks created in Kaldea. Using this feature, you can create dependencies between Airflow and Kaldea-triggered tasks.
+
+## Requirements
+
+- Airflow version 1.10.3 and up
+
+---
+
+## Initial setup
+
+<Info>
+  Google SSO users cannot currently configure `airflow-kaldea`. If you are a
+  Google SSO user, please ask an admin from your organization with local login
+  credentials to set up this connection instead.
+</Info>
+
+Install the package in Airflow:
+
+```bash
+$ pip install airflow-kaldea
+```
+
+Click on `+` to create a new connection in Airflow Connection.
+
+<img
+  src="/images/connect-to-airflow-1.png"
+  title="List Connection"
+  style={{ borderRadius: "12px", border: "1px solid #E5E7EB" }}
+/>
+
+Set up your Airflow Connection in the Airflow interface.
+
+- Connection ID: `kaldea_default`
+- Connection Type: `HTTP`
+- Host: `https://api.kaldea.com/`
+- Login: `your-kaldea-userid-here`
+- Password: `your-kaldea-password-here`
+
+---
+
+## Connect Airflow to Kaldea Job
+
+How-to-guide on connecting Airflow DAG to Kaldea Job.
+
+<Info>5 minute guide</Info>
+
+### In Kaldea
+
+#### Step 1: Create a new job
+
+1. Navigate to `Job`. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-15/ca5011fc-79d6-4152-bd67-84ca008ac14e/ascreenshot.jpeg?tl_px=0,188&br_px=1493,1028&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=19,139)
+2. Click `Create a Job`. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/b8f73d65-08ac-4fd7-ad64-6ee1fd0ad74b/user_cropped_screenshot.jpeg?tl_px=1889,0&br_px=3382,840&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=470,126)
+3. Give your Job a title by clicking 'Untitled'.<br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/bac35801-bfef-48cc-af58-d5aa791227d4/ascreenshot.jpeg?tl_px=0,0&br_px=1493,840&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=141,121)<br />For this guide, I'm going to title it as "Connect Airflow to Job".
+4. Click 'Add a description' to add more information.<br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/7a966b7d-61cd-4fcf-b593-7acf0f97304b/ascreenshot.jpeg?tl_px=0,12&br_px=1493,852&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=161,139)
+5. Even go further by adding adding labels. To add labels, click `+ Add label`.<br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/1e61bbf1-3092-437c-b295-6f18f33c51a5/ascreenshot.jpeg?tl_px=0,80&br_px=1493,920&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=133,139)<br />I'm going to add `Airflow`.<br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/7103c46d-23d1-4dd1-be9e-c64b02d4c53a/ascreenshot.jpeg?tl_px=91,280&br_px=1584,1120&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=262,139)
+6. Select a "Update table" task card from the list of tables. Simply check the checkbox next to the table you would like to create an Airflow connection and dependency to.<br />
+   ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/7fb65cd0-d4f7-4cf0-895b-6e095ab779c8/ascreenshot.jpeg?tl_px=2090,550&br_px=3583,1390&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=340,139)
+   <Note>
+     Tables with refresh queries are indicated with a green indicator and tables
+     without refresh queries are indicated with a red indicator. For
+     Airflow-triggered tasks, this doesn’t matter because refresh queries are
+     only needed for tables triggered by Kaldea.
+   </Note>
+7. Newly added tasks are, by default, triggered by Kaldea. Let's change the trigger
+   type to Airflow for this task card. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/b731756d-b8aa-48a0-96ff-cd4fd0ff5e7f/ascreenshot.jpeg?tl_px=1269,882&br_px=2762,1722&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=262,139)
+8. Finally click `Register` to register this job. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/b201f01b-63ce-4964-b58d-316d1647eec6/ascreenshot.jpeg?tl_px=2090,0&br_px=3583,840&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=462,67)
+
+#### Step 2: Create schedule for job
+
+11. Click 🗓️ icon to create a schedule for this job. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/66b9bbef-ab61-4e53-a5b5-ec502a0ff95f/ascreenshot.jpeg?tl_px=2090,0&br_px=3583,840&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=399,72)
+12. Configure timezone. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/8f77430e-d30c-4a6e-9bf5-271feb8c3c6e/ascreenshot.jpeg?tl_px=2090,152&br_px=3583,992&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=322,139)
+    For this demo, I'm going select the timezone as Seoul.
+    ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/79edf416-af0a-4bb7-ae01-6c745f480848/ascreenshot.jpeg?tl_px=2090,622&br_px=3583,1462&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=320,139)
+
+13. Configure frequency and time. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/ae206418-474d-4d73-86dd-891dc894aa1d/ascreenshot.jpeg?tl_px=2090,406&br_px=3583,1246&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=340,139)
+
+14. Finally, click `Create` to finish this step. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/18d1a9c8-3e0c-41c7-b142-bc2729576c9f/ascreenshot.jpeg?tl_px=2090,790&br_px=3583,1630&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=345,139)
+
+#### Step 3: Copy code
+
+16. Click on the task card to reveal details. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/494f7ed0-431f-4038-98a7-9a0082c4645b/ascreenshot.jpeg?tl_px=1611,894&br_px=3104,1734&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=262,139)
+
+17. From task details, click 📋 icon to copy the example code to clipboard. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-14/3dccd746-74f8-409f-b6a0-5239bd4aa3c0/ascreenshot.jpeg?tl_px=2090,622&br_px=3583,1462&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=465,139)
+
+### In Airflow
+
+#### Step 4: Paste code
+
+18. Navigate to Airflow and paste the copied code. <br />
+    Your code will resemble something like this:
+
+    ```Python Example code
+    from airflow.models import DAG
+    from airflow_kaldea.operators.kaldea_job_operator import KaldeaJobOperator
+
+    default_args = {}
+
+    dag = DAG(
+        dag_id='data_dag',
+        default_args=default_args,
+        schedule_interval='0 * * * *',  # Job schedule time
+    )
+
+    kaldea_job = KaldeaJobOperator(
+        task_id='{{table_name}}_kaldea_job',  # Target table name
+        kaldea_job_id='{{kaldea_job_id}}',  # Job Id
+        kaldea_task_id='{{kaldea_task_id}}',  # Task Id
+        dag=dag,
+    )
+    ```
+
+    <Warning>
+      Make sure that the schedule corresponds to the actual `schedule_interval`
+      of the Airflow DAG to which you are attempting to link. Otherwise the
+      integration will not work.
+    </Warning>
+
+19. Add necessary dependencies between the task and the added KaldeaJob Operator.
+    e.g. `airflow_dim_total_users >>  kaldea_job_dim_total_users`
+
+### In Kaldea
+
+#### Step 5: Activate Job
+
+20. Finally, go back to Kaldea and activate job by pressing this toggle. <br />![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-02-15/8a661bb8-acb4-4303-b046-ad1ca72c09df/user_cropped_screenshot.jpeg?tl_px=108,0&br_px=1601,840&sharp=0.8&width=560&wat_scale=50&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-labs-public.s3.us-east-2.amazonaws.com/images/watermarks/watermark_default.png&wat_pad=327,37)
