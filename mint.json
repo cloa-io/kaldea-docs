@@ -91,7 +91,10 @@
         },
         {
           "group": "Connected apps",
-          "pages": ["integrations/connected-apps/slack"]
+          "pages": [
+            "integrations/connected-apps/slack",
+            "integrations/connected-apps/google-drive"
+          ]
         }
       ]
     },
