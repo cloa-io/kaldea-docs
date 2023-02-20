@@ -1,0 +1,35 @@
+---
+title: "Feb 20, 2023"
+"og:title": "Changelog of Kaldea, the unified analytics platform"
+"og:description": "Check out Kaldea's product and service journey into developing a seamless and fully connected analytics experience from creating jobs to data discovery to query, and reporting."
+---
+
+## 🪢 Connect Airflow DAGs to Kaldea Job
+
+You can now link Airflow DAGs with Kaldea Jobs, allowing tasks in Kaldea to be automatically triggered after an upstream transformation in Airflow is finished.
+
+<img
+  src="https://assets.cloa.io/changelog/02-20-2023/1.png"
+  style={{ borderRadius: "6px", border: "1px solid #F3F4F6" }}
+/>
+[Learn more →](/job/connect-to-airflow)
+
+## 🐞 Fixes and improvements
+
+- Fixed a bug that was preventing the creation of new Freshness SLAs for tables
+- Fixed a bug where UDF lists were initially empty upon viewing
+- Fixed broken UI in the refresh query modal
+- Improved timestamp in query editor and query editor blocks to display exact time query was executed in full date and time format i.e. Feb 20, 2023 at 09:00:00AM
+- Fixed a bug where certain query blocks were not being correctly displayed on workspace pages
+- Fixed inability to add new datasources because `Register` button was disabled
+- Fixed a bug in charts that prevented integer count aggregation
+- Fixed a bug where the shortcut : for UDF trigger was causing interference while writing queries in data sources that do not support UDF
+- Fixed a bug that was displaying an incorrect timestamp for the last active time of users in `Settings` → `Members`
+- Improved UDF list to display the type - distinguish between User-Defined Functions (UDF) and Table-Valued Functions (TVF)
+- Added the ability to edit query while it is being run
+- Fixed a bug where row count for results less than 20 rows was not visible
+- [BigQuery] Added support for referencing authorized view in refresh queries
+- We now collect and display user last access time
+- Fixed a bug that caused the query parameter input field to continuously lose focus
+- [PostgreSQL] Improved logic behind source validation -[Redshift] Improved driver to support multiple database connections
+- [Redshift] Improved catalog to display external tables
