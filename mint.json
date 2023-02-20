@@ -74,6 +74,10 @@
       ]
     },
     {
+      "group": "Sharing and Collaboration",
+      "pages": ["collaboration/sharing-pages"]
+    },
+    {
       "group": "Integrations",
       "pages": [
         {
@@ -104,14 +108,7 @@
     },
     {
       "group": "Guides",
-      "pages": [
-        "guides/exploring-catalog",
-        "guides/saving-queries",
-        "guides/sharing-pages",
-        "guides/keyboard-shortcuts",
-        "guides/pre-onboarding",
-        "guides/notifications"
-      ]
+      "pages": ["guides/keyboard-shortcuts", "guides/notifications"]
     },
     {
       "group": "Security",
