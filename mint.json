@@ -54,7 +54,11 @@
   "navigation": [
     {
       "group": "Getting Started",
-      "pages": ["introduction", "getting-started/tutorials"]
+      "pages": [
+        "introduction",
+        "getting-started/get-the-app",
+        "getting-started/tutorials"
+      ]
     },
     {
       "group": "Features",
