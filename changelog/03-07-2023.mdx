@@ -1,0 +1,55 @@
+---
+title: "Mar 7, 2022"
+"og:title": "Changelog of Kaldea, the unified analytics platform"
+"og:description": "Check out Kaldea's product and service journey into developing a seamless and fully connected analytics experience from creating jobs to data discovery to query, and reporting."
+---
+
+## 🔗 Snippet dependency
+
+CTE (common table expression) dependency is essential to know when querying because it helps identify the relationships between CTEs and can improve the efficiency of database queries.
+
+<img
+  src="https://assets.cloa.io/changelog/03-07-2023/1.png"
+  style={{ borderRadius: "12px" }}
+/>
+To view upstream and downstream dependencies of CTEs in a given query statement,
+press on the **Dependency** tab in the Snippet sidebar.
+<img
+  src="https://assets.cloa.io/changelog/03-07-2023/2.png"
+  style={{ borderRadius: "12px" }}
+/>
+When dealing with complex queries that have web-like CTE dependencies, it is impossible
+to modify select CTEs and partially execute them in order to evaluate changes. However,
+this can be done in Kaldea’s **Snippet Dependency** tab.
+
+## 🐞 Fixes and improvements
+
+- Fixed a bug where the application of filters for query results was being delayed
+- Clicking on shortcuts will no longer change the directory view
+- You can now write table names in the Query editor, and we will autocomplete the remaining paths for you
+- Fixed a bug where running highlighted query statement wasn’t working
+- You can now configure column width for query results
+- Improved schema row height auto-size to hug description
+- Improved color schema and button positions for Save query modal
+- Improved loading speed for the Query editor
+- Fixed a bug where a new query tab would not be in focus upon opening
+- Fixed UI inconsistencies in the query result area of the Query editor
+- Refined Query editor autocomplete
+- Improved the performance of the Query editor for handling a large volume of queries
+- Fixed a bug where refreshing the page after canceling a query mid-run was causing a broken user interface
+- Fixed a bug where refreshing the page while in Query editor split view was causing tabs in the right to disappear and re-appear intermittently
+- Filter for query result is now located near query table
+- Fixed a bug where re-running a query after changing the query statement in the Saved query was impossible
+- Fixed a bug where re-running query in Saved query was not producing results
+- [BigQuery] Added column for describing UDF type on UDF list
+- Added query tab horizontal scrolling function for when too many query tabs are open
+- You can now add parenthesis to specific query statements by highlighting them and then pressing `(`
+- Improved scale for numeric x-value charts
+- Query tabs are now stored locally, which means your query statement will remain intact even after refreshing the page
+- If the query result is the same after a rerun, the chart will remain intact
+- Improved dry run error message to clear immediately after query re-run
+- Fixed a bug where credentials were returning empty values despite a remaining key value after the initial failure of the data source connection
+- Improved Query editor to maintain page focus when making changes to a query parameter
+- Fixed a bug where popularity scoring was inaccurately displayed
+- [Redshift] Added multiple statements querying
+- [Redshift] Fixed bug where existing tables were inaccurately identified as deleted tables
