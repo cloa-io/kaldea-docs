@@ -65,7 +65,7 @@
       "pages": [
         {
           "group": "Workspace",
-          "pages": ["workspace/pages"]
+          "pages": ["workspace/pages", "workspace/dashboard"]
         },
         {
           "group": "Query",
