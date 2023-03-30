@@ -1,0 +1,74 @@
+---
+title: "Mar 20, 2022"
+"og:title": "Changelog of Kaldea, the unified analytics platform"
+"og:description": "Check out Kaldea's product and service journey into developing a seamless and fully connected analytics experience from creating jobs to data discovery to query, and reporting."
+---
+
+## 🔔 Read, Unread, and Archive notifications
+
+Mark notifications as read or unread to keep track of notifications that need attention.
+
+<img
+  src="https://assets.cloa.io/changelog/03-20-2023/1.png"
+  style={{ borderRadius: "12px", border: "1px solid #E5E7EB" }}
+/>
+Use the Archive feature to help ensure that your Inbox only contains unresolved notifications.
+Archived items can be found in the `Archived` section.
+
+## ⚙️ Personal Notifications settings
+
+Configure email notifications and personal Slack notifications.
+
+<img
+  src="https://assets.cloa.io/changelog/03-20-2023/2.png"
+  style={{ borderRadius: "12px", border: "1px solid #E5E7EB" }}
+/>
+Go to `Settings` → `Account` → `Notifications` to enable notifications for email
+and Slack. Options for Slack will be configurable once integration has been enabled.
+
+Customize when you want to receive notifications, such as when you have been
+invited to a dashboard or when a table that you are watching becomes outdated.
+
+## 📸 Improvements to query result snapshot configurations
+
+Previously, the query results of individual query editor blocks in pages were stored in Kaldea's S3 if you had enabled the feature using the "enable query snapshot" toggle after query execution.
+
+You can now set up query results to be stored by default in Query settings. Supported storage destinations include Kaldea's S3 and BigQuery.
+
+<img
+  src="https://assets.cloa.io/changelog/03-20-2023/3.png"
+  style={{ borderRadius: "12px", border: "1px solid #E5E7EB" }}
+/>
+If you are an admin, go to `Settings` → `General` to enable or disable query result
+snapshot for your organization.
+
+Choose storage destinations for each data source.
+If you choose to store it in a storage destination other than Kaldea’s S3, you must
+set up storage limitations.
+
+## 📌 Introducing Dashboard
+
+Create and share dashboards to allow members of your organization to easily view and analyze data in a visual format.
+
+<img
+  src="https://assets.cloa.io/changelog/03-20-2023/4.png"
+  style={{ borderRadius: "12px", border: "1px solid #E5E7EB" }}
+/>
+To create a dashboard, navigate to the section where you want to create the dashboard
+and click on `+ Add a dashboard`, just as you would create a page.
+
+Add page shortcuts, textbox, or charts to the dashboard by clicking `+ Add card`. Click `Save` to save
+changes once you are done.
+
+## 🐞 Fixes and improvements
+
+- Improved notification to alert users watching the table when table freshness is outdated.
+- [Redshift] Added query multiple statement support
+- [Redshift] Fixed a bug that was causing table sync to fail when a refresh query was added for another table
+- Improved job scheduler to run task with the updated refresh query when restarted
+- Fixed a bug that caused the query snippet save action to save the entire query statement instead of just the selected snippet
+- [Safari] Improved table preview
+- Fixed a bug where the search in the query result table was breaking the pagination UI
+- Fixed inaccurate toast message when adding an alias in the workspace
+- Improved position of dropdown when editing link blocks
+- Fixed a bug that caused the LNB interface to break when viewing a saved query
